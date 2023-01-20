@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+    bool KiemTraToanDuong(int b[], int nb){           //ham kiem tra xem mang co toan so duong hay khong
+        for(int i =0; i < nb ; i++){
+            if(b[i] <=0) return false;
+        }
+        return true;
+    }
+
+    void XuatMangCon(int b[], int nb){          //ham de xuat cac mang con
+        for(int i =0; i < nb; i++){
+            cout<<b[i]<<" ";
+        }
+    }
+
+    void ConDuongDaiNhat(int a[], int n){       //ham tim mang con toan duong dai nhat
+        int ChieuDai, c
+        int b[10001], nb;
+        for(int i = 0; i < n; i++){
+            for(ChieuDai = n; ChieuDai >= 1+i; ChieuDai--){     //nen chieu dai mang ta lay tu cao nhat ve thap nhat
+                nb = 0;
+                for(int j = i; j <ChieuDai; j++){
+                    b[nb] = a[j];
+                    nb++;
+                }
+                if(KiemTraToanDuong(b, nb) == true){
+                    XuatMangCon(b, nb);
+                    tontai++;
+                    break;
+                }
+            }
+        if( tontai!=0) break;
+        }
+    }
+
+int main()
+{
+    int n;
+    cin>>n;
+    int a[10001];
+    for( int i=0; i<n; i++){
+        cin>>a[i];
+    }
+    ConDuongDaiNhat(a,n);
+    return 0;
+}
